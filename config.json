@@ -1,0 +1,6 @@
+{
+    "serviceName": "system-service-template",
+    "serviceDisplayName": "system-service-template display name",
+    "serviceDecription": "my service description",
+    "httpPort": "2345"
+}
