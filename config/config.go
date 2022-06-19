@@ -13,6 +13,7 @@ type Config struct {
 	ServiceDisplayName string
 	ServiceDescription string
 	HttpPort           string
+	Database           map[string]string
 	LogName            string
 	LogMaxSize         int
 	LogMaxAge          int

@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"system-service-template/config"
+	"system-service-template/database"
 	"system-service-template/utils"
 	"system-service-template/web"
 
@@ -50,6 +51,7 @@ func (p *program) run() {
 }
 
 func main() {
+	// setup config
 	if err := config.LoadConfig(); err != nil {
 		log.Fatal(err)
 		return
@@ -57,6 +59,7 @@ func main() {
 
 	gConfig = config.GetConfig()
 
+	// setup log
 	logFilePath = gConfig.LogName
 	if logFilePath == "" {
 		logFilePath = "app.log"
@@ -70,6 +73,8 @@ func main() {
 		MaxAge:   gConfig.LogMaxAge,
 	}
 	log.SetOutput(logger)
+	// setup database
+	database.Init()
 
 	pro := &program{
 		cfg: &service.Config{
